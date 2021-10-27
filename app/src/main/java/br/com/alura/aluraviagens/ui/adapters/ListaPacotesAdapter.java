@@ -2,15 +2,12 @@ package br.com.alura.aluraviagens.ui.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -23,7 +20,7 @@ import br.com.alura.aluraviagens.model.Pacotes;
 public class ListaPacotesAdapter extends BaseAdapter {
 
     private final List<Pacotes> pacotes;
-    private Context contexto;
+    private final Context contexto;
 
 
     public ListaPacotesAdapter(List<Pacotes> pacotesListados, Context contexto) {
@@ -52,17 +49,22 @@ public class ListaPacotesAdapter extends BaseAdapter {
 
         View viewCriada = LayoutInflater.from(contexto).inflate(R.layout.item_layout, parent, false);
 
-        TextView local = viewCriada.findViewById(R.id.itempacote_textView_local);
-        local.setText(pacotes.get(posicao).getLocal());
+        mostraLocal(posicao, viewCriada);
+        mostraImagem(posicao, viewCriada);
+        mostraDias(posicao, viewCriada);
+        mostraPreco(posicao, viewCriada);
 
-        ImageView imagem = viewCriada.findViewById(R.id.itempacote_imageView_fotoCidade);
+        return viewCriada;
+    }
 
-        Resources recurso = contexto.getResources();
-        int identificadorDraw = recurso.getIdentifier(pacotes.get(posicao).getImagem(),
-                "drawable", contexto.getPackageName());
-        imagem.setImageResource(identificadorDraw);
+    private void mostraPreco(int posicao, View viewCriada) {
+        TextView preco = viewCriada.findViewById(R.id.itempacote_textView_precos);
+        NumberFormat formatoBrasileiro = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
+        String precoFormatado = formatoBrasileiro.format(pacotes.get(posicao).getPreco());
+        preco.setText(precoFormatado);
+    }
 
-
+    private void mostraDias(int posicao, View viewCriada) {
         TextView dia = viewCriada.findViewById(R.id.itempacote_textView_dias);
         int quantidadeDias = pacotes.get(posicao).getDias();
         if (quantidadeDias <= 1) {
@@ -70,13 +72,19 @@ public class ListaPacotesAdapter extends BaseAdapter {
         } else {
             dia.setText(quantidadeDias + " dias");
         }
+    }
 
+    private void mostraImagem(int posicao, View viewCriada) {
+        ImageView imagem = viewCriada.findViewById(R.id.itempacote_imageView_fotoCidade);
 
-        TextView preco = viewCriada.findViewById(R.id.itempacote_textView_precos);
-        NumberFormat formatoBrasileiro = DecimalFormat.getCurrencyInstance(new Locale("pt", "br"));
-        String precoFormatado = formatoBrasileiro.format(pacotes.get(posicao).getPreco());
-        preco.setText(precoFormatado);
+        Resources recurso = contexto.getResources();
+        int identificadorDraw = recurso.getIdentifier(pacotes.get(posicao).getImagem(),
+                "drawable", contexto.getPackageName());
+        imagem.setImageResource(identificadorDraw);
+    }
 
-        return viewCriada;
+    private void mostraLocal(int posicao, View viewCriada) {
+        TextView local = viewCriada.findViewById(R.id.itempacote_textView_local);
+        local.setText(pacotes.get(posicao).getLocal());
     }
 }
