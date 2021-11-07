@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.PagamentoActivity">
+
+
+    <TextView
+        android:id="@+id/pagamento_textView_avisocredito"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Digite as informações do cartão de crédito que você deseja usar para o pagamento"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0"
+
+        />
+
+    <TextView
+        android:id="@+id/pagamento_textView_labelPreco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Valor da compra:"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_textView_avisocredito" />
+
+    <TextView
+        android:id="@+id/pagamento_textView_preco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/pagamento_textView_labelPreco"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_textView_labelPreco"
+        tools:text="R$ 421,50" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/pagamento_input_numerocartao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:hint="Número do cartão"
+        android:inputType="number"
+        android:maxLength="12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/pagamento_textView_preco"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_textView_preco" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/pagamento_input_mesvalidade"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/pagamento_input_numerocartao"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_input_numerocartao"
+        android:hint="MM"
+        android:inputType="number"
+        android:maxLength="2"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/pagamento_input_anovalidade"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/pagamento_input_mesvalidade"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_input_numerocartao"
+        android:hint="AA"
+        android:inputType="number"
+        android:maxLength="2"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/pagamento_input_cvc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:drawableStart="@drawable/ic_cvc_cartao_de_credito"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_input_numerocartao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/pagamento_input_anovalidade"
+        android:hint="CVC"
+        android:inputType="number"
+        android:maxLength="3"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/pagamento_input_nomecartao"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:hint="Nome no cartão"
+        android:digits="@string/mascara_nome_cartao"
+        android:inputType="textFilter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/pagamento_input_numerocartao"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_input_mesvalidade" />
+
+    <Button
+        android:id="@+id/pagamento_botaofinaliza"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/forma_retangular_laranja"
+        android:text="FINALIZAR COMPRA"
+        app:layout_constraintEnd_toEndOf="@id/pagamento_input_nomecartao"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pagamento_input_nomecartao"
+        app:layout_constraintTop_toBottomOf="@id/pagamento_input_nomecartao" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

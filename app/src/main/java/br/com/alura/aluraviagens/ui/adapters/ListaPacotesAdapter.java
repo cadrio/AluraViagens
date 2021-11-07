@@ -1,7 +1,6 @@
 package br.com.alura.aluraviagens.ui.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import java.util.Locale;
 
 import br.com.alura.aluraviagens.R;
 import br.com.alura.aluraviagens.model.Pacotes;
+import br.com.alura.aluraviagens.util.ConversoresUtil;
 
 public class ListaPacotesAdapter extends BaseAdapter {
 
@@ -75,12 +75,11 @@ public class ListaPacotesAdapter extends BaseAdapter {
     }
 
     private void mostraImagem(int posicao, View viewCriada) {
-        ImageView imagem = viewCriada.findViewById(R.id.itempacote_imageView_fotoCidade);
 
-        Resources recurso = contexto.getResources();
-        int identificadorDraw = recurso.getIdentifier(pacotes.get(posicao).getImagem(),
-                "drawable", contexto.getPackageName());
-        imagem.setImageResource(identificadorDraw);
+        ImageView imagem = viewCriada.findViewById(R.id.itempacote_imageView_fotoCidade);
+        imagem.setImageDrawable(ConversoresUtil.devolveDrawable(contexto, pacotes.get(posicao).getImagem()));
+
+
     }
 
     private void mostraLocal(int posicao, View viewCriada) {

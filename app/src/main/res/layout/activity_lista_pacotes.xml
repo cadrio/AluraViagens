@@ -7,7 +7,7 @@
     tools:context=".ui.activity.ListaPacotes">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/listaPacotes_imageView_banner"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:background="#132099"
@@ -49,7 +49,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         tools:listitem="@layout/item_layout"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/listaPacotes_imageView_banner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
